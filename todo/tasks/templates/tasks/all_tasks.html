@@ -1,0 +1,17 @@
+<form method = "POST">
+
+{{form}}
+
+<input type = "submit" value = "Add"></input>
+
+{% csrf_token %}
+{% for i in counter %}
+<br>
+{% endfor %}
+{% for task in tasks %}
+    {{ forloop.counter }} - {{ task }}<br>
+    <a href = {% url "update_task" task.id %}>Update</a>
+    <a href = {% url "delete_task" task.id %}>Delete</a></br>
+{% endfor %}
+
+</form>
