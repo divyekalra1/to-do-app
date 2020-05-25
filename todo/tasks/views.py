@@ -22,7 +22,7 @@ def update_task_view(request, key):
         if form.is_valid():
             form.save()
             form = TaskForm()
-            return redirect("/")
+            return redirect("task_view")
     return render(request, 'tasks/update_task.html', {"form" : form, "task" : task} )
 
 
@@ -30,5 +30,5 @@ def delete_task_view(request, key):
     task = Task.objects.get(id = key)
     if request.method == "POST":
         task.delete()
-        return redirect("/")
+        return redirect("task_view")
     return render(request, 'tasks/delete_task.html', {"task" : task} )
