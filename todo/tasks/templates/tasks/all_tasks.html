@@ -1,21 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TO DO LIST</title>
+</head>
+<body>
+	<h1>YOUR TASKS</h1>
+	
+<div>
 <form method = "POST">
 
-{{form}}
+<label><b>Your Task:</b></label>{{form.title}}
+<label><b>Completed:</b></label>{{form.completed}}
 
-<input type = "submit" value = "Add"></input>
+
+<input type = "submit" style="background:blue; color:white; border:2px solid black; font-weight:bold ; border-radius:7px; width:5%; height:2rem; font-size: 20px;"  value = "ADD"></input>
 
 {% csrf_token %}
 {% for i in counter %}
 <br>
-{% endfor %}
+{% endfor %}</div>
 {% for task in tasks %}
+	<div class="d1">
     {% if task.completed == True %}
-    {{ forloop.counter }} - <strike>{{ task }}</strike><br>
+    <b>{{ forloop.counter }} - <strike>{{ task }}</strike></b><br>
     {% else %}
-    {{ forloop.counter }} - {{ task }}<br>
+    <b>{{ forloop.counter }} - {{ task }}</b><br>
     {% endif %}
+</div>
     <a href = {% url "update_task" task.id %}>Update</a>
     <a href = {% url "delete_task" task.id %}>Delete</a></br>
+    <hr style="width:100%; padding-top:2px; border:2px #4C2719;">
 {% endfor %}
 
 </form>
+
+
+
+<style type="">
+	h1
+	{
+		background-color:#FFE0B5;
+		color:#4C2719;
+		padding-left:20px;
+		padding-right: 10px;
+		text-align: center;
+		border: 10px solid #4C2719 ;
+		margin:0px;
+		display: inline-block;
+		width:97%;
+
+	} 
+	div 
+	{
+		background-color:#A4AF69;
+		padding:20px;
+		
+		text-align: center;
+		width:98%;
+		border:10px solid #4C2719;
+	}
+	.myfieldclass
+	{
+		color:red;
+	}
+	label
+	{
+		font-size: 24px;
+		color:#4C2719;
+
+	}
+	a{
+		font-size: 15px;
+		color:#4C2719;
+		font-weight: bold;
+		border:2px solid #4C2719;
+		margin-right:10px;
+		margin-top: 5px;
+		background-color: #A4AF69;
+		opacity: 1;
+		text-decoration: none;
+
+	}
+	body
+	{
+		background-color: #EDE580;
+	}
+	a:hover
+	{
+		opacity:0.5;
+	}
+	.d1
+	{	text-align: left;
+		font-size: 20px;
+		color:#4C2847;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+</style>
+
+
+</body>
+</html>
+
