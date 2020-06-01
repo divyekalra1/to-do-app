@@ -23,7 +23,7 @@ def update_task_view(request, key):
             form.save()
             form = TaskForm()
             return redirect("task_view")
-    return render(request, 'tasks/update_task.html', {"form" : form, "task" : task} )
+    return render(request, 'tasks/update_task.html',{"form" : form, "task" : task})
 
 
 def delete_task_view(request, key):
